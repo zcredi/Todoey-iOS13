@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Item: Encodable {
+class Item: Codable {
     
     var title = ""
     var done = false
