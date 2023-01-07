@@ -13,12 +13,16 @@ class TodoListVC: UITableViewController {
     
     var itemArray = [Item]()
     
+    var selectedCategory : Category? {
+        didSet {
+            loadItems()
+        }
+    }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadItems()
         
     }
     
@@ -38,11 +42,11 @@ class TodoListVC: UITableViewController {
         
         cell.accessoryType = item.done ? .checkmark : .none
         
-        if item.done == true {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+//        if item.done == true {
+//            cell.accessoryType = .checkmark
+//        } else {
+//            cell.accessoryType = .none
+//        }
         
         return cell
     }
@@ -65,8 +69,6 @@ class TodoListVC: UITableViewController {
     }
     
     //MARK: - Add New Item
-    
-    
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
